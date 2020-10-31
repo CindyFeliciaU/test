@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">TP4_</string>
+    <string name="play_music_btn">Jouer le son</string>
+    <string name="stop_music_btn">Pause</string>
+</resources>
