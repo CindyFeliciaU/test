@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">TP4_</string>
+    <string name="play_music_btn">Jouer le son</string>
+    <string name="stop_music_btn">Pause</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
