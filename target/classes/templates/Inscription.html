@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head lang="fr">
+    <div th:include="fragments/title::title"></div>
+
+    <script crossorigin="anonymous"
+            integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+            src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <link href="/css/datepicker/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css">
+    <script src="/js/datepicker/bootstrap-datepicker.min.js"></script>
+</head>
+<body>
+<div th:include="fragments/header::header"></div>
+
+<h1>Bienvenue sur la page de creation de compte </h1>
+<hr>
+<div class="container">
+    <form>
+        <fieldset>
+            <label for="name_user">Name :</label>
+            <div class="input-group text">
+                <input id="name_user" type="text" name="name" data-msg="Please enter your name" required="required" />
+            </div>
+            <label for="email_user">Email :</label>
+            <div class="input-group text">
+                <input id="email_user" type="email" name="email" data-msg="Please enter a valid email" required="required" />
+
+            </div>
+            <label for="password_user">Password :</label>
+            <div class="input-group text">
+                <input id="password_user" type="password" name="password" data-msg="Please enter a valid password" required="required" />
+            </div>
+            <label for="confirmation_password_user">Confirmation password :</label>
+            <div class="input-group text">
+                <input id="confirmation_password_user" type="password" name="password" data-msg="Please enter a valid password" required="required" />
+            </div>
+            <input type="submit" value="inscrire"/>
+        </fieldset>
+    </form>
+</div>
+----
+
+<div th:include="fragments/footer::footer"></div>
+</body>
+
+
+
+<script type="text/javascript">
+		$('[data-provide="datepicker"]').datepicker({
+			format: 'dd/mm/yyyy'
+		});
+
+		$("form").on("submit", (e) => {
+			const nouveau_user = $(e.target).serialize();
+			$.ajax({
+				type: "POST",
+				url: "/creation_user",
+				data: {user: nouveau_user},
+				success: (e) => {
+					// On a pu s'inscrire, on affiche une notification quelque part.
+					console.log(e);
+				},
+				error: (e) => {
+					// S'il n'est pas possible de s'inscrire, par exemple.
+					console.error(e);
+				}
+			})
+			e.preventDefault();
+		});
+	</script>
+</html>

@@ -1,0 +1,9 @@
+-- Permet de créer une table nommée rdv dans la base de données.
+create table rdv
+(
+    debut   datetime     null,
+    fin     datetime     null,
+    medecin varchar(100) null,
+    patient varchar(100) null,
+    id      varchar(100) not null
+);
